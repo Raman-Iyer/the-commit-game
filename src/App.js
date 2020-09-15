@@ -10,10 +10,10 @@ function App() {
     <div className="App">
       <table>
         <tr style={{ height: "1000px", verticalAlign: "top" }}>
-          <td>
+          <td style={{ width: "600px"}}>
             <Player playerName="Player1" />
           </td>
-          <td>
+          <td style={{ width: "600px"}}>
             <Player playerName="Player2" />
           </td>
         </tr>
