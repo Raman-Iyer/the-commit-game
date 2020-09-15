@@ -1,16 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import SearchUser from './components/SearchUser'
-
-function searchUser(userName){
-  console.log(userName)
-}
+import Player from './components/Player'
 
 function App() {
   return (
     <div className="App">
-      <SearchUser searchUser={searchUser}/>
+      <table>
+        <tr style={{ height: "1000px", verticalAlign: "top" }}>
+          <td>
+            <Player playerName="Player1" />
+          </td>
+          <td>
+            <Player playerName="Player2" />
+          </td>
+        </tr>
+      </table>
     </div>
   );
 }

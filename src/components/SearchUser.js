@@ -24,11 +24,8 @@ function SearchUser(props) {
                 onInputBoxTypingDone(searchUser, userName)
             }} onChange={e => {
                 setUserName(e.target.value)
-            }} disabled={isPlayed} />
-            <button onClick={() => {
-                playTurn(userName)
-                setIsPlayed(true)
-            }}>Play!</button>
+            }} />
+            
         </div>
     )
 }
