@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import SearchUser from './SearchUser'
 
 function playTurn() {
-
+    
 }
 
 function Player(props) {

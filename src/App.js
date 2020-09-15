@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import Player from './components/Player'
 
+window.playerPlayedCount = 0
+
 function App() {
   return (
     <div className="App">

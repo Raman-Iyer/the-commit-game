@@ -16,7 +16,6 @@ function onInputBoxTyping() {
 
 function SearchUser(props) {
     const [userName, setUserName] = useState("")
-    const [isPlayed, setIsPlayed] = useState(false)
     const { searchUser, playTurn } = props
     return (
         <div>
