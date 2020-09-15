@@ -9,7 +9,22 @@ function fetchImage(userName, setImageUrl) {
 }
 
 function fetchCommitCount(userName, setCommitCount) {
-
+    fetch(`https://api.github.com/users/${userName}/repos`)
+        .then(res => res.json())
+        .then(result => {
+            let repos = result.map((repo) => {
+                return repo.name
+            })
+            let commitCount = 0
+            for (let repo of repos) {
+                fetch(`https://api.github.com/repos/${userName}/${repo}/commits`)
+                    .then(res => res.json())
+                    .then(result => {
+                        setCommitCount(commitCount + result.length)
+                        commitCount += result.length
+                    })
+            }
+        })
 }
 
 function UserDetails(props) {
