@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Imports
+import React from 'react'
+import './App.css'
+import './index.css'
 import Player from './components/Player'
 
-window.playerPlayedCount = 0
-
+// App Component
 function App() {
+  // Initialize 2 players each in one column of a table
   return (
     <div className="App">
       <table>
-        <tr style={{ height: "1000px", verticalAlign: "top" }}>
-          <td style={{ width: "600px"}}>
-            <Player playerName="Player1" />
-          </td>
-          <td style={{ width: "600px"}}>
-            <Player playerName="Player2" />
-          </td>
-        </tr>
+        <tbody>
+          <tr className="player-holder">
+            <td className="player-content">
+              <Player playerName="Player1" />
+            </td>
+            <td className="player-content">
+              <Player playerName="Player2" />
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );
 }
 
+// Export the created component
 export default App;
