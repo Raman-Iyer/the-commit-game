@@ -6,7 +6,7 @@ import UserDetails from './UserDetails'
 // Player Component
 function Player(props) {
     // Player name is the player 1 or player 2
-    const { playerName } = props
+    const { playerName , setPlayerCommitCount} = props
 
     // useState Hooks
     const [userName, setUserName] = useState("")
@@ -33,20 +33,27 @@ function Player(props) {
             })
     }
 
+    // function to set commitCount that was fetched from API
+    function playerCommitCount (commitCount){
+        setPlayerCommitCount(commitCount)
+    }
+
     return (
         <div>
             <p>{playerName}</p>
             {/*Search user and display if the user is valid or not*/}
             <SearchUser searchUser={(searchedName) => {
                 searchUser(searchedName)
-            }}/>
+            }} />
             <div style={{ display: status !== "" ? "block" : "none" }}>{status}</div>
             {/*Button to finalize the search and will be shown only when a valid user is selected*/}
             <button style={{ display: canPlay ? "inline-block" : "none" }} onClick={() => {
                 setIsPlayed(true)
             }} disabled={isPlayed} >Play!</button>
             {/*Show User Details when player finalizes his move and clicks on play*/}
-            <UserDetails userName={userName} isPlayed={isPlayed} />
+            <UserDetails userName={userName} isPlayed={isPlayed} playerCommitCount={(commitCount) => {
+                playerCommitCount(commitCount)
+            }} />
         </div>
     )
 }

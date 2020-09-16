@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 // UserDetails Component
 function UserDetails(props) {
     // userName for API calls and isPlayed to show anything or not
-    const { userName, isPlayed } = props
+    const { userName, isPlayed, playerCommitCount } = props
 
     // useState Hooks
     const [imageUrl, setImageUrl] = useState("")
@@ -56,8 +56,10 @@ function UserDetails(props) {
                                 }, 0)
                             }
                             commitCount += count
-                            if (isLastItem)
+                            if (isLastItem) {
+                                playerCommitCount(commitCount)
                                 setCommitCount(commitCount)
+                            }
                         })
                     return repo.name
                 })
