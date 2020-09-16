@@ -1,12 +1,21 @@
 // Imports
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchUser from './SearchUser'
 import UserDetails from './UserDetails'
 
 // Player Component
 function Player(props) {
     // Player name is the player 1 or player 2
-    const { playerName , setPlayerCommitCount} = props
+    const { playerName, setPlayerCommitCount, isReset, resetComplete } = props
+
+    // useEffect Hook
+    useEffect(() => {
+        if (isReset) {
+            setIsPlayed(false)
+            setStatus("")
+            setCanPlay(false)
+        }
+    }, [isReset])
 
     // useState Hooks
     const [userName, setUserName] = useState("")
@@ -34,7 +43,7 @@ function Player(props) {
     }
 
     // function to set commitCount that was fetched from API
-    function playerCommitCount (commitCount){
+    function playerCommitCount(commitCount) {
         setPlayerCommitCount(commitCount)
     }
 
@@ -42,9 +51,9 @@ function Player(props) {
         <div>
             <p>{playerName}</p>
             {/*Search user and display if the user is valid or not*/}
-            <SearchUser searchUser={(searchedName) => {
+            <SearchUser isPlayed={isPlayed} searchUser={(searchedName) => {
                 searchUser(searchedName)
-            }} />
+            }} isReset={isReset} resetComplete={resetComplete} />
             <div style={{ display: status !== "" ? "block" : "none" }}>{status}</div>
             {/*Button to finalize the search and will be shown only when a valid user is selected*/}
             <button style={{ display: canPlay ? "inline-block" : "none" }} onClick={() => {

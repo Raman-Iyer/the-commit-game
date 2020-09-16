@@ -74,7 +74,7 @@ function UserDetails(props) {
                     <img src={imageUrl} />
                 </div>
                 <div>{userName}</div>
-                <div>{commitCount}</div>
+                <div>Commit Count : - {commitCount}</div>
             </div>
         )
     }

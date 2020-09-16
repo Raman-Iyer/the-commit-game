@@ -1,10 +1,18 @@
 // Imports
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // SearchUser component
 function SearchUser(props) {
     // searchUser is a function in the Player component to do the API call.
-    const { searchUser } = props
+    const { isPlayed, searchUser, isReset, resetComplete } = props
+
+    // useEffect Hook
+    useEffect(() => {
+        if (isReset) {
+            setUserName("")
+            resetComplete()
+        }
+    }, [isReset])
 
     // useState Hooks
     const [userName, setUserName] = useState("")
@@ -35,7 +43,7 @@ function SearchUser(props) {
 
     return (
         <div>
-            <input onKeyDown={onInputBoxTyping} onKeyUp={onInputBoxTypingDone} onChange={onChangeHandler} />
+            <input onKeyDown={onInputBoxTyping} onKeyUp={onInputBoxTypingDone} onChange={onChangeHandler} disabled={isPlayed ? true : false} />
         </div>
     )
 }
